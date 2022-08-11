@@ -32,8 +32,8 @@ jobs:
         run: |
           curl.exe -o protoc-21.5-win64.zip https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protoc-21.5-win64.zip
           curl.exe -o protobuf-all-21.5.zip https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protobuf-all-21.5.zip 
-          7z x protobuf-all-21.5.zip -oprotobuf-21.5
-          7z x protoc-21.5-win64.zip -oprotoc-21.5-win64
+          7z e protobuf-all-21.5.zip -oprotobuf-21.5
+          7z e protoc-21.5-win64.zip -oprotoc-21.5-win64
           move protoc-21.5-win64\bin\protoc.exe protobuf-21.5\src
           setx /M Path "%Path%; $pwd\protobuf-21.5\src"
           protoc --version
