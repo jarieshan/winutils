@@ -53,7 +53,7 @@ jobs:
           setx /M VCVARSPLAT "amd64"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           $Env:path="C:\tools\cygwin\bin;"+$Env:Path
-          $Env:__VSCMD_PREINIT_PATH="C:\tools\cygwin\bin;"+$Env:__VSCMD_PREINIT_PATH%
+          $Env:__VSCMD_PREINIT_PATH="C:\tools\cygwin\bin;"+$Env:__VSCMD_PREINIT_PATH
           protoc --version
           java -version
           Get-Command bash
