@@ -53,7 +53,7 @@ jobs:
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
-          mvn package -Pdist -DskipTests -Dtar
+          mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
           set /P hadoop_version=<hadoop_version
           $hadoop_version
