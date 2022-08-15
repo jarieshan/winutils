@@ -38,7 +38,7 @@ jobs:
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           choco install cygwin
-          $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
+         
           
           
       - uses: ilammy/msvc-dev-cmd@v1
@@ -51,9 +51,11 @@ jobs:
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
-          setx /M PATH "C:\tools\cygwin\bin;%PATH%"
+          setx /M PATH ";%PATH%"
           setx /M PATH "$pwd\protobuf-2.5.0\src;%PATH%"
-          setx /M __VSCMD_PREINIT_PATH "C:\tools\cygwin\bin;%__VSCMD_PREINIT_PATH%"
+          $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
+          $Env:path="C:\tools\cygwin\bin;"+$Env:Path
+          $Env:__VSCMD_PREINIT_PATH="C:\tools\cygwin\bin;"+$Env:%__VSCMD_PREINIT_PATH%
           protoc --version
           java -version
           Get-Command bash
