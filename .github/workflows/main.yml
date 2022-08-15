@@ -52,6 +52,7 @@ jobs:
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
           setx /M PATH "C:\tools\cygwin\bin;%PATH%"
+          setx /M PATH "$pwd\protobuf-2.5.0\src;%PATH%"
           setx /M __VSCMD_PREINIT_PATH "C:\tools\cygwin\bin;%__VSCMD_PREINIT_PATH%"
           protoc --version
           java -version
