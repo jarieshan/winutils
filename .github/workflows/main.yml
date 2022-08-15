@@ -50,3 +50,5 @@ jobs:
           cd ..
           setx /M ZLIB_HOME "$pwd\zlib1212"
           setx /M Platform "x64"
+          cd winutils
+          mvn package -Pdist -DskipTests -Dtar -Dmaven.javadoc.skip=true
