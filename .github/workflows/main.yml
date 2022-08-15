@@ -37,4 +37,5 @@ jobs:
           move protoc-21.5-win64\bin\protoc.exe protobuf-21.5\src
           $Env:path=$Env:Path+";$pwd\protobuf-21.5\src"
           protoc --version
-          ls C:\Program Files\Microsoft Visual Studio\2022\Enterprise
+          ls "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
+          ls "C:\Program Files (x86)"
