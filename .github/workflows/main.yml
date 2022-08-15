@@ -39,7 +39,6 @@ jobs:
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           choco install cygwin
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
-          $Env:path="C:\tools\cygwin\bin;"+$Env:Path
           
           
       - uses: ilammy/msvc-dev-cmd@v1
@@ -49,11 +48,10 @@ jobs:
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
-          $Env:ZLIB_HOME="$pwd\zlib-1.2.12"
-          refreshenv
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
+          setx /M PATH "C:\tools\cygwin\bin;%PATH%"
           setx /M __VSCMD_PREINIT_PATH "C:\tools\cygwin\bin;%__VSCMD_PREINIT_PATH%"
           protoc --version
           java -version
