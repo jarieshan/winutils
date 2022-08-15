@@ -30,12 +30,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protoc-21.5-win64.zip -OutFile protoc-21.5-win64.zip 
-          Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protobuf-all-21.5.zip  -OutFile protobuf-all-21.5.zip 
-          Expand-Archive -LiteralPath protobuf-all-21.5.zip -DestinationPath ./
-          Expand-Archive -LiteralPath protoc-21.5-win64.zip -DestinationPath ./protoc-21.5-win64
-          move protoc-21.5-win64\bin\protoc.exe protobuf-21.5\src
-          $Env:path=$Env:Path+";$pwd\protobuf-21.5\src"
+          Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protoc-2.5.0-win32.zip -OutFile protoc-2.5.0-win32.zip 
+          Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.zip -OutFile protobuf-2.5.0.zip
+          Expand-Archive -LiteralPath protobuf-2.5.0.zip -DestinationPath ./
+          Expand-Archive -LiteralPath protoc-2.5.0-win32.zip -DestinationPath ./protoc-2.5.0-win32
+          move protoc-2.5.0-win32\protoc.exe protobuf-2.5.0\src
+          $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           protoc --version
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./zlib1212
