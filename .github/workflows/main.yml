@@ -50,5 +50,13 @@ jobs:
           cd ..
           setx /M ZLIB_HOME "$pwd\zlib1212"
           setx /M Platform "x64"
-          cd winutils
           mvn package -Pdist -DskipTests -Dtar -Dmaven.javadoc.skip=true
+          ls ./
+          set /P hadoop_version=<hadoop_version
+          7z a "hadoop-$hadoop_version.zip" bin\
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: AX6S OpenWrt Firmware
+          path: ./bin
