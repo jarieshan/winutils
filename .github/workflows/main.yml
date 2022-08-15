@@ -59,5 +59,6 @@ jobs:
           java -version
           Get-Command bash
           bash -version
-          mvn package -Pdist -DskipTests -Dtar -e -X
+          dir env:
+          
           ls ./
