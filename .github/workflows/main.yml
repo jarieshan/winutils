@@ -38,7 +38,7 @@ jobs:
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           protoc --version
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
-          Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./zlib1212
+          Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           choco install cygwin
           
           
@@ -46,13 +46,13 @@ jobs:
       
       - name: Build something requiring CL.EXE
         run: |
-          cd ./zlib1212
+          cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
-          setx /M ZLIB_HOME "$pwd\zlib1212"
+          setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
-          mvn -- package -Pdist,native-win -DskipTests -Dtar
+          mvn package -Pdist -DskipTests -Dtar -Dmaven.javadoc.skip=true
           ls ./
           set /P hadoop_version=<hadoop_version
           $hadoop_version
