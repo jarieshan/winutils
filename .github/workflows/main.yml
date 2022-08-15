@@ -60,5 +60,5 @@ jobs:
           Get-Command bash
           bash -version
           dir env:
-          
+          mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
