@@ -56,7 +56,5 @@ jobs:
           $Env:__VSCMD_PREINIT_PATH="C:\tools\cygwin\bin;"+$Env:__VSCMD_PREINIT_PATH
           protoc --version
           java -version
-          Get-Command bash
-          bash -version
-          dir env:
+          mvn package -pdist -dskiptests -dtar
           ls ./
