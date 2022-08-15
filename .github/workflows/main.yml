@@ -47,22 +47,17 @@ jobs:
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
+          del C:\Windows\System32\bash.exe
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           $Env:path="C:\tools\cygwin\bin;"+$Env:Path
+          $Env:ZLIB_HOME="$pwd\zlib-1.2.12"
+          
           protoc --version
           java -version
           Get-Command bash
+          bash -version
           mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
-          set /P hadoop_version=<hadoop_version
-          $hadoop_version
-          7z a "hadoop-$hadoop_version.zip" bin\
-      
-      - name: Upload Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: AX6S OpenWrt Firmware
-          path: ./
