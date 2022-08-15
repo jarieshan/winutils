@@ -54,6 +54,7 @@ jobs:
           $Env:path=$Env:Path+";C:\tools\cygwin\bin"
           protoc --version
           java -version
+          Get-Command bash
           mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
           set /P hadoop_version=<hadoop_version
