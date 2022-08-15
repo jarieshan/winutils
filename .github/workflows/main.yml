@@ -47,7 +47,6 @@ jobs:
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
-          del C:\Windows\System32\bash.exe
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
