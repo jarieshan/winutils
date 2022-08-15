@@ -39,6 +39,7 @@ jobs:
           protoc --version
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./zlib1212
+          choco install cygwin
           
           
       - uses: ilammy/msvc-dev-cmd@v1
@@ -50,7 +51,8 @@ jobs:
           cd ..
           setx /M ZLIB_HOME "$pwd\zlib1212"
           setx /M Platform "x64"
-          mvn package -Pdist -DskipTests -Dtar -X
+          setx /M VCVARSPLAT "amd64"
+          mvn package -Pdist,native-win -DskipTests -Dtar
           ls ./
           set /P hadoop_version=<hadoop_version
           $hadoop_version
