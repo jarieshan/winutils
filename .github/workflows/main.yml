@@ -66,5 +66,5 @@ jobs:
           echo "---------- build ----------"
           # bash D:\a\winutils\winutils\hadoop-project/../dev-support/bin/dist-copynativelibs --version=3.2.3 --builddir=D:\a\winutils\winutils\hadoop-project-dist\target --artifactid=hadoop-project-dist --isalbundle=false --isallib= --openssllib= --opensslbinbundle=false --openssllibbundle=false --snappybinbundle=false --snappylib= --snappylibbundle=false --zstdbinbundle=false --zstdlib= --zstdlibbundle=false
           # mvn package -Pdist -DskipTests -Dtar -e -X
-          mvn package -Pdist","native-win -DskipTests -Dtar -e -X
+          mvn clean package -Pdist -DskipTests -Dtar -e -X
           ls ./
