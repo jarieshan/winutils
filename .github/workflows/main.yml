@@ -38,14 +38,15 @@ jobs:
           move protoc-2.5.0-win32\protoc.exe protobuf-2.5.0\src
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
-          choco install cygwin
+          # choco install cygwin
+          
          
           
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
         run: |
           $ConfirmPreference = 'None'
-          Set-Alias -Name bash -Value C:\tools\cygwin\bin\bash.exe
+          Set-Alias -Name bash -Value C:\msys64\usr\bin\bash.exe
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
@@ -53,12 +54,12 @@ jobs:
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
-          $Env:path=$Env:Path+";C:\tools\cygwin\bin"
-          $Env:__VSCMD_PREINIT_PATH=$Env:__VSCMD_PREINIT_PATH+";C:\tools\cygwin\bin"
+          $Env:path=$Env:Path+";C:\msys64\usr\bin\"
+          $Env:__VSCMD_PREINIT_PATH=$Env:__VSCMD_PREINIT_PATH+";C:\msys64\usr\bin\"
 
           protoc --version
           java -version
           bash -version
           bash D:\a\winutils\winutils\hadoop-project/../dev-support/bin/dist-copynativelibs --version=3.2.3 --builddir=D:\a\winutils\winutils\hadoop-project-dist\target --artifactid=hadoop-project-dist --isalbundle=false --isallib= --openssllib= --opensslbinbundle=false --openssllibbundle=false --snappybinbundle=false --snappylib= --snappylibbundle=false --zstdbinbundle=false --zstdlib= --zstdlibbundle=false
-          # mvn package -Pdist -DskipTests -Dtar -e -X
+          mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
