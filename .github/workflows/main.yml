@@ -39,9 +39,7 @@ jobs:
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           choco install cygwin
-          wsl --install -d Ubuntu
          
-          
           
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
