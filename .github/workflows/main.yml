@@ -45,6 +45,8 @@ jobs:
       
       - name: Build something requiring CL.EXE
         run: |
+          ls C:\tools\cygwin\bin
+          del C:\Program Files\Git\bin\bash.exe
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
