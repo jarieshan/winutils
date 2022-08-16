@@ -63,4 +63,4 @@ jobs:
           # mvn package -Pdist -DskipTests -Dtar -e -X
           mvn clean package -Pdist -DskipTests -Dtar -e -X
           ls ./
-          shell: "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        shell: "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
