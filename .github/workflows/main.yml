@@ -30,6 +30,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          $ConfirmPreference = 'None'
           Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protoc-2.5.0-win32.zip -OutFile protoc-2.5.0-win32.zip 
           Invoke-WebRequest -Uri https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.zip -OutFile protobuf-2.5.0.zip
           Expand-Archive -LiteralPath protobuf-2.5.0.zip -DestinationPath ./
@@ -45,7 +46,7 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
         run: |
-        
+          $ConfirmPreference = 'None'
           Set-Alias -Name bash -Value C:\tools\cygwin\bin\bash.exe
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
