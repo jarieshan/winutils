@@ -39,12 +39,7 @@ jobs:
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           
-         
-          
-      - uses: ilammy/msvc-dev-cmd@v1
-      - uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.0.x'
+
       - name: Build something requiring CL.EXE
         run: |
           $ConfirmPreference = 'None'
@@ -68,3 +63,4 @@ jobs:
           # mvn package -Pdist -DskipTests -Dtar -e -X
           mvn clean package -Pdist -DskipTests -Dtar -e -X
           ls ./
+          shell: "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
