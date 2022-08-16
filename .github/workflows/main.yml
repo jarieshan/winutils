@@ -38,11 +38,12 @@ jobs:
           move protoc-2.5.0-win32\protoc.exe protobuf-2.5.0\src
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
-          
+          choco install cygwin
 
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
         run: |
+          ls C:\tools\cygwin\bin
           $ConfirmPreference = 'None'
           Set-Alias -Name bash -Value C:\msys64\usr\bin\bash.exe
           cd ./zlib-1.2.12
@@ -59,5 +60,5 @@ jobs:
           java -version
           bash -version
           echo "---------- build ----------"
-          mvn clean package -Pdist -DskipTests -Dtar -e -X
+          mvn package -Pdist","native-win -DskipTests -Dtar -e -X -rf ":"hadoop-hdfs-native-client
           ls ./
