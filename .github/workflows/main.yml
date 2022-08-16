@@ -40,10 +40,9 @@ jobs:
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           
 
+      - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
-        shell: cmd
         run: |
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           $ConfirmPreference = 'None'
           Set-Alias -Name bash -Value C:\msys64\usr\bin\bash.exe
           cd ./zlib-1.2.12
@@ -56,12 +55,9 @@ jobs:
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           $Env:path="C:\msys64\usr\bin;"+$Env:Path
           $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
-
           protoc --version
           java -version
           bash -version
           echo "---------- build ----------"
-          # bash D:\a\winutils\winutils\hadoop-project/../dev-support/bin/dist-copynativelibs --version=3.2.3 --builddir=D:\a\winutils\winutils\hadoop-project-dist\target --artifactid=hadoop-project-dist --isalbundle=false --isallib= --openssllib= --opensslbinbundle=false --openssllibbundle=false --snappybinbundle=false --snappylib= --snappylibbundle=false --zstdbinbundle=false --zstdlib= --zstdlibbundle=false
-          # mvn package -Pdist -DskipTests -Dtar -e -X
           mvn clean package -Pdist -DskipTests -Dtar -e -X
           ls ./
