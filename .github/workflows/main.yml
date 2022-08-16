@@ -59,5 +59,6 @@ jobs:
           protoc --version
           java -version
           bash -version
+          Get-Command bash
           mvn package -Pdist -DskipTests -Dtar -e -X
           ls ./
