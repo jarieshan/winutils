@@ -44,7 +44,7 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '5.0.x'
       - name: Build something requiring CL.EXE
         run: |
           $ConfirmPreference = 'None'
@@ -55,6 +55,7 @@ jobs:
           setx /M ZLIB_HOME "$pwd\zlib-1.2.12"
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
+          echo "$shell-executable"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
           $Env:path="C:\msys64\usr\bin;"+$Env:Path
           $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
