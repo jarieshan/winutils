@@ -46,6 +46,7 @@ jobs:
           wsl
 
       - uses: ilammy/msvc-dev-cmd@v1
+      - uses: Vampire/setup-wsl@v1
       - name: Build something requiring CL.EXE
         run: |
           $ConfirmPreference = 'None'
