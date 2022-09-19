@@ -60,5 +60,5 @@ jobs:
           java -version
           bash -version
           echo "---------- build ----------"
-          mvn package -Pdist","native-win -DskipTests -Dtar -e -X -rf ":"hadoop-hdfs-native-client
+          mvn package -Pdist","native-win -DskipTests -Dtar -e -X
           ls ./
