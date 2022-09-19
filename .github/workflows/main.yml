@@ -56,9 +56,9 @@ jobs:
           setx /M VCVARSPLAT "amd64"
           echo "$shell-executable"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
-          $Env:path="C:\msys64\usr\bin;"+$Env:Path
-          [Environment]::SetEnvironmentVariable('path', $Env:path) 
-          $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
+          # $Env:path="C:\msys64\usr\bin;"+$Env:Path
+          # [Environment]::SetEnvironmentVariable('path', $Env:path) 
+          # $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
           protoc --version
           java -version
           bash -version
