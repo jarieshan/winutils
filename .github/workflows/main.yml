@@ -39,6 +39,11 @@ jobs:
           Invoke-WebRequest -Uri http://www.zlib.net/zlib1212.zip -OutFile zlib1212.zip 
           Expand-Archive -LiteralPath zlib1212.zip -DestinationPath ./
           choco install cygwin
+          dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+          dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+          wsl --set-default-version 2
+          Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
+          Add-AppxPackage .\Ubuntu.appx
 
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build something requiring CL.EXE
