@@ -51,8 +51,8 @@ jobs:
           setx /M Platform "x64"
           setx /M VCVARSPLAT "amd64"
           echo "$shell-executable"
-          [Environment]::SetEnvironmentVariable('path',"C:\msys64\usr\bin;$([Environment]::GetEnvironmentVariable('path'))")
-          $env:Path = "C:\msys64\usr\bin;" + [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+          $Env:path="C:\msys64\usr\bin;"+$Env:Path
+          [Environment]::SetEnvironmentVariable('path', $Env:path) 
           $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
           protoc --version
           java -version
