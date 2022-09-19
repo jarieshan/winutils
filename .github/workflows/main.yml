@@ -46,6 +46,9 @@ jobs:
           ls C:\tools\cygwin\bin
           $ConfirmPreference = 'None'
           Set-Alias -Name bash -Value C:\msys64\usr\bin\bash.exe
+          
+          [Environment]::SetEnvironmentVariable('path',"C:\msys64\usr\bin;$([Environment]::GetEnvironmentVariable('path'))")
+          $env:Path = "C:\msys64\usr\bin;" + [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
           cd ./zlib-1.2.12
           nmake -f win32/Makefile.msc
           cd ..
@@ -54,7 +57,6 @@ jobs:
           setx /M VCVARSPLAT "amd64"
           echo "$shell-executable"
           $Env:path=$Env:Path+";$pwd\protobuf-2.5.0\src"
-          $Env:path="C:\msys64\usr\bin;"+$Env:Path
           $Env:__VSCMD_PREINIT_PATH="C:\msys64\usr\bin;"+$Env:__VSCMD_PREINIT_PATH
           protoc --version
           java -version
